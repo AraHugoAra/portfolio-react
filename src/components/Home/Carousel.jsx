@@ -9,7 +9,7 @@ function Carousel() {
     const vidRef = useRef(null)
 
     useEffect(() => {
-        fetch('http://localhost:8000/videos')
+        fetch('https://portfolio-trebor-back.herokuapp.com/videos')
             .then(data => data.json())
             .then(json => setState({videos: json, isFetching: false}))
             .catch(err => console.log(err))

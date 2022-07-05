@@ -7,7 +7,7 @@ function ShoppingList({activeCategory, cart, updateCart}) {
 
     useEffect(() => {
         async function fetchAndSort() {
-            const response = await fetch('http://localhost:8000/store')
+            const response = await fetch('https://portfolio-trebor-back.herokuapp.com/store')
             const json = await response.json()
             // Trier les données en fonction de l'id
             const sorted = await json.data.sort((a, b) => a.id - b.id)
