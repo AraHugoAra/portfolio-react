@@ -1,3 +1,5 @@
+/*
+
 const PORT = process.env.PORT || 8000
 const express = require('express')
 const cors = require('cors')
@@ -10,9 +12,9 @@ app.use(cors())
 
 // Request and reponse template
 
-/* app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.json('hi')
-}) */
+})
 
 app.get('/videos', (req, res) => {
         const options = {
@@ -39,3 +41,6 @@ app.get('/store', (req, res) => {
 )
 
 app.listen(8000, () => console.log(`Server is Running on ${PORT}`))
+
+
+*/
