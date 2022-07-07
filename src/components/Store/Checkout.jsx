@@ -26,7 +26,7 @@ function Checkout({cart}) {
         // Push items from cart to checkoutOption's lineItems
         cart.map(item => items.push(({price: item.stripeApi, quantity: item.amount})))
         // Load API key and redirectToCheckout
-        const stripe = await loadStripe(pk_test_51L3zJ3JWSzv4jRsNPi5xczPF4CttCtdPk4qCdgz0jqfZBwEebJ9t8zhANYED6xodsEVyVbe3FQBpTF391TUAmNDj00tUy9FSzF)
+        const stripe = await loadStripe('pk_test_51L3zJ3JWSzv4jRsNPi5xczPF4CttCtdPk4qCdgz0jqfZBwEebJ9t8zhANYED6xodsEVyVbe3FQBpTF391TUAmNDj00tUy9FSzF')
         const { error } = await stripe.redirectToCheckout(checkoutOptions)
         console.log('Stripe checkout error ', error)
         // Error handling
