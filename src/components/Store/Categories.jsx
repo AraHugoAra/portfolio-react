@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react"
-
+import useFetch from "../../hooks/useFetch"
 
 function Categories({activeCategory, setActiveCategory}) {
 
-    const [state, setState] = useState({isLoading: true})
-
-    // Fetch categories
-    useEffect(() => {
-        fetch("https://portfolio-trebor-strapi.herokuapp.com/api/categories")
-            .then(data => data.json())
-            .then(json => setState({categories: json.data, isLoading: false}))
-    }, [])
+    const { loading, data } = useFetch('https://portfolio-trebor-strapi.herokuapp.com/api/categories')
 
     function handleReset() {
         setActiveCategory([])
@@ -29,11 +21,11 @@ function Categories({activeCategory, setActiveCategory}) {
     )}
 
     return (
-        state.isLoading === true ? (
+        loading ? (
             <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         ) : (
         <div className="categories">
-            {state.categories.map((item) => (
+            {data.data.map((item) => (
             <div className="categories__input" key={item.id}>
                 <input className="categories__input--checkbox" onChange={(e) => handleCheck(e)} type="checkbox" value={item.attributes.name} name={item.attributes.name} id={item.attributes.name} />
                 <label htmlFor={item.attributes.name}>{item.attributes.name}</label>

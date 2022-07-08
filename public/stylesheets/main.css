@@ -122,7 +122,7 @@ html {
 body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-image: url(http://localhost:1337/uploads/5409828_f5ac8eb639.jpg?updated_at=2022-06-08T14:17:33.559Z);
+  background-image: url(https://portfolio-trebor.s3.eu-west-3.amazonaws.com/thumbnail_5409828_f5ac8eb639_17aa049e70.jpg?width=3000&height=2000);
   background-size: cover;
 }
 
@@ -838,7 +838,7 @@ form button:hover {
 }
 
 .preview-shop {
-  background-image: url(http://localhost:1337/uploads/v960_ning_05_7721266831.jpg?updated_at=2022-06-06T13:26:23.255Z);
+  background-image: url(https://portfolio-trebor.s3.eu-west-3.amazonaws.com/thumbnail_v960_ning_05_7721266831_0546de1899.jpg?width=5000&height=3334);
   background-size: cover;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -995,7 +995,7 @@ form button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url(http://localhost:1337/uploads/purple_pink_watercolor_texture_background_12848d7cf3.jpg?updated_at=2022-06-06T13:26:47.477Z);
+  background-image: url(https://portfolio-trebor.s3.eu-west-3.amazonaws.com/thumbnail_purple_pink_watercolor_texture_background_12848d7cf3_0f8dc89abe.jpg?width=3000&height=2000);
   background-size: cover;
 }
 
@@ -1307,7 +1307,8 @@ form button:hover {
 
 @media screen and (max-width: 1017px) {
   .cart {
-    background-image: url(http://localhost:1337/uploads/v960_ning_05_7721266831.jpg?updated_at=2022-06-06T13:26:23.255Z);
+    background-image: url(https://portfolio-trebor.s3.eu-west-3.amazonaws.com/thumbnail_v960_ning_05_7721266831_0546de1899.jpg?width=5000&height=3334);
+    background-size: cover;
     width: 100%;
     height: 160%;
     position: absolute;

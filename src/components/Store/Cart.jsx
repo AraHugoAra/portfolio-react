@@ -1,17 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import useTitle from '../../hooks/useTitle'
 import Checkout from './Checkout'
 
 function Cart({cart, updateCart}) {
 
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
     const initialTotal = 0
     const totalCart = cart.reduce((acc, currItem) => acc + (currItem.price * currItem.amount), initialTotal)
   
-    useEffect(() => {(totalCart === 0) ? (
-        document.title ='TRéBOR 🛒 empty'
-        ) : (
-        document.title =`TRéBOR 🛒 ${totalCart}€`
-        )}, [totalCart])
+    useTitle(totalCart)
 
     return (
         <>

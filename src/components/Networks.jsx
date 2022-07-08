@@ -1,25 +1,16 @@
-import {useState, useEffect} from 'react'
+import useFetch from '../hooks/useFetch'
 
 function Networks({className}) {
 
-    const [state, setState] = useState({isLoading: true})
-    
-    useEffect(() => {
-        fetch("https://portfolio-trebor-strapi.herokuapp.com/api/networks?populate=icon,iconWhite")
-            .then(res => res.json())
-            .then(json => {
-                setState({networks: json.data, isLoading: false})
-            })
-        }
-    ,[])
+    const { loading, data } = useFetch('https://portfolio-trebor-strapi.herokuapp.com/api/networks?populate=icon,iconWhite')
 
     return (
-        state.isLoading === true ? (
+        loading === true ? (
             <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         ) : (
         <div className={className} >
             <ul className='networks'>
-                {state.networks.map(item => 
+                {data.data.map(item => 
                     (<li key={`link-${item.id}`}>
                         <a href={item.attributes.link} rel="noreferrer" target="_blank">
                         <img    className="networks__logo" key={`img-${item.id}`} 

@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import useTitle from "../../hooks/useTitle";
 import MusicItem from "./MusicItem";
 
 function Music() {
 
     const [state, setState] = useState({isFetching: true})
+
+    useTitle()
 
     useEffect(() => {
         async function fetchAndSort() {

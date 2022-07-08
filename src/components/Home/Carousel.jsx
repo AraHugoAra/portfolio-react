@@ -1,19 +1,13 @@
 import ButtonCarousel from './ButtonCarousel'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
+import useFetch from '../../hooks/useFetch'
 
 function Carousel() {
 
-    const [state, setState] = useState({isFetching: true})
+    const { loading, data } = useFetch('https://portfolio-trebor-back.herokuapp.com/videos')
     const [current, setCurrent] = useState(1)
     const [displayed, setDisplayed] = useState(true)
     const vidRef = useRef(null)
-
-    useEffect(() => {
-        fetch('https://portfolio-trebor-back.herokuapp.com/videos')
-            .then(data => data.json())
-            .then(json => setState({videos: json, isFetching: false}))
-            .catch(err => console.log(err))
-    }, [])
 
     function handleMute() {
         vidRef.current.muted=false;
@@ -23,11 +17,11 @@ function Carousel() {
     }
 
     return (<div  className='preview-videos__carousel'>
-            {state.isFetching === true ? (
+            {loading  ? (
             <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             ) : (
             <div  className='preview-videos__videos'>
-                {state.videos.data.map((item, index) => index === current && 
+                {data.data.map((item, index) => index === current && 
                     <div className='preview-videos__videos--current' key={index}>
                         <video  ref={vidRef} 
                                 controls autoPlay
@@ -37,7 +31,7 @@ function Carousel() {
                         </video>
                     </div>)
                 }
-                {state.videos.data.map((item, index) => (current === 0) ? 
+                {data.data.map((item, index) => (current === 0) ? 
                     ((index === current +1 || index === 5) &&
                         <div className={index === current +1 ? "preview-videos__videos--next" : "preview-videos__videos--prev"} key={index}>
                             <video  muted={true}

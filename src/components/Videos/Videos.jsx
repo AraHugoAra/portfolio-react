@@ -1,24 +1,20 @@
-import { useEffect, useState } from "react"
+import useFetch from "../../hooks/useFetch"
+import useTitle from "../../hooks/useTitle"
 import VideoItem from "./VideoItem"
 
 function Videos() {
 
-    const [state, setState] = useState({isFetching: true})
+    const { loading, data } = useFetch('https://portfolio-trebor-back.herokuapp.com/videos')
 
-    useEffect(() => {
-        fetch('https://portfolio-trebor-back.herokuapp.com/videos')
-            .then(data => data.json())
-            .then(json => setState({videos: json, isFetching: false}))
-            .catch(err => console.log(err))
-    }, [])
+    useTitle()
 
     return (
-        state.isFetching ? (
+        loading ? (
             <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         ) : (
         <div className = "videos">
             <ul className = "videos__list">
-            {state.videos.data.map(item => 
+            {data.data.map(item => 
                 <li key={item.id}>
                     <VideoItem  itemName={item.attributes.title} 
                                 itemVideo={item.attributes.video.data.attributes.url}
