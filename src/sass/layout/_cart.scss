@@ -5,8 +5,8 @@
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    left: -100%;
-    transition: all 500ms  cubic-bezier(.32,0,.07,1);
+    left: 200%;
+    transition: all 500ms cubic-bezier(.32,0,.07,1);
     @include tablet-only {
         background-image: $background-secondary;
         background-size: cover;
@@ -21,12 +21,14 @@
     &__top {
         border-bottom: white solid 1px;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         width: 100%;
         max-height: 90px;
         height: 5%;
+        padding-left: 10px;
+        padding-right: 10px;
         &--button-close {
             width: 40px;
             padding-right: 15px;
@@ -42,22 +44,21 @@
     }
     &__button-open {
         position: absolute;
-        left: 85px;
-        top: 109px;
+        left: 90%;
+        //top: -2575px;
+        width: 25px;
         transition: all 400ms;
         transition-delay: 400ms;
         opacity: 1;
         @include tablet-only {
             top: 70px;
-            left: 5%;
         }
         @include mobile-only {
             top: 130px;
-            left: 5%;
         }
         &.active {
             opacity: 0;
-            left: -70px;
+            left: 105%;
         }
         &:hover {
             cursor: pointer;
